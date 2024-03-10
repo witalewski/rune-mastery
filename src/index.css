@@ -2,29 +2,23 @@
 
 :root {
   --color-black: #101010;
-
   --color-gray-light-transparent: #80808040;
   --color-gray-medium: #404040;
   --color-gray-dark: #303030;
-
   --text-color-base: #f0f0f0;
   --text-color-secondary: #33465b;
-
   --font-size-lg: 18px;
   --font-size-md: 14px;
-
   --spacing-xs: 8px;
   --spacing-sm: 12px;
   --spacing-md: 16px;
   --spacing-lg: 24px;
   --spacing-xl: 36px;
-
   --sprite-size: 50px;
 
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     --font-size-lg: 28px;
     --font-size-md: 18px;
-
     --spacing-xs: 12px;
     --spacing-sm: 16px;
     --spacing-md: 24px;
