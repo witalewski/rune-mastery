@@ -1,0 +1,26 @@
+.talentButton {
+  padding: 2px;
+
+  background: linear-gradient(lightgray, lightgray 50%, white 50%, lightgray);
+
+  &[aria-checked="true"] {
+    background: linear-gradient(
+      deepskyblue,
+      deepskyblue 50%,
+      lightskyblue 50%,
+      deepskyblue
+    );
+
+    box-shadow: 0 0 10px 5px lightgray;
+  }
+
+  &[aria-disabled="true"] {
+    background: red;
+  }
+}
+
+.icon {
+  height: 50px;
+  width: 50px;
+  background-color: coral;
+}
