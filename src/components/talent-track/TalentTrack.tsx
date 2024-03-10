@@ -1,4 +1,5 @@
-import { ReactNode, useCallback } from "react";
+import clsx from "clsx";
+import { useCallback } from "react";
 import TalentButton from "../talent-button/TalentButton";
 import styles from "./TalentTrack.module.css";
 
@@ -50,25 +51,27 @@ export default function TalentTrack({
       <h2 className={styles.title}>{name}</h2>
       <div className={styles.track}>
         {talents.map((talent, i) => (
-          <PathGridCell key={talent.id}>
+          <div className={styles.cell} key={talent.id}>
+            <div
+              className={clsx(
+                styles.separator,
+                talent.selected && styles.separatorSelected
+              )}
+            />
             <TalentButton
               talent={talent}
               disabled={isTalentDisabled(i)}
               onChange={onTalentChange}
             />
-          </PathGridCell>
+            <div
+              className={clsx(
+                styles.separator,
+                talents[i + 1]?.selected && styles.separatorSelected
+              )}
+            />
+          </div>
         ))}
       </div>
-    </div>
-  );
-}
-
-function PathGridCell({ children }: { children: ReactNode }) {
-  return (
-    <div className={styles.cell}>
-      <div className={styles.separator} />
-      {children}
-      <div className={styles.separator} />
     </div>
   );
 }

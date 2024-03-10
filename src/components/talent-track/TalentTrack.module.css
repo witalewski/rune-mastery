@@ -23,9 +23,13 @@
 .separator {
   flex: 1;
   height: 16px;
-  background-color: var(--color-gray-dark);
+  background-color: var(--color-gray-darker);
   border-top: 1px solid var(--color-gray-light-transparent);
   border-bottom: 1px solid var(--color-gray-light-transparent);
+
+  &.separatorSelected {
+    background-color: var(--color-gray-dark);
+  }
 }
 
 .cell {
