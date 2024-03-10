@@ -1,40 +1,19 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo } from "react";
 import PointsCounter from "../points-counter/PointsCounter";
 import TalentTrack from "../talent-track/TalentTrack";
 import styles from "./MasteryCalculator.module.css";
 
-const TOTAL_POINTS = 6;
+interface MasteryCalculatorProps {
+  paths: TalentPath[];
+  totalPoints: number;
+  onChange: (value: TalentPath[]) => void;
+}
 
-export default function MasteryCalculator() {
-  const [paths, setPaths] = useState([
-    {
-      id: "path-1",
-      name: "Talent Path 1",
-      talents: [
-        { id: "talent-1", name: "Talent 1", selected: true },
-        { id: "talent-2", name: "Talent 2", selected: true },
-        { id: "talent-3", name: "Talent 3", selected: false },
-        { id: "talent-4", name: "Talent 4", selected: false },
-        { id: "talent-5", name: "Talent 5", selected: false },
-        { id: "talent-6", name: "Talent 6", selected: false },
-        { id: "talent-7", name: "Talent 7", selected: false },
-      ],
-    },
-    {
-      id: "path-2",
-      name: "Talent Path 2",
-      talents: [
-        { id: "talent-1", name: "Talent 1", selected: true },
-        { id: "talent-2", name: "Talent 2", selected: true },
-        { id: "talent-3", name: "Talent 3", selected: false },
-        { id: "talent-4", name: "Talent 4", selected: false },
-        { id: "talent-5", name: "Talent 5", selected: false },
-        { id: "talent-6", name: "Talent 6", selected: false },
-        { id: "talent-7", name: "Talent 7", selected: false },
-      ],
-    },
-  ]);
-
+export default function MasteryCalculator({
+  paths,
+  totalPoints,
+  onChange,
+}: MasteryCalculatorProps) {
   const pointsSpent = useMemo(
     () =>
       paths.reduce(
@@ -46,18 +25,16 @@ export default function MasteryCalculator() {
   );
 
   const hasPointsRemaining = useMemo(
-    () => pointsSpent < TOTAL_POINTS,
-    [pointsSpent]
+    () => pointsSpent < totalPoints,
+    [pointsSpent, totalPoints]
   );
 
   const onPathChange = useCallback(
     (updatedPath: TalentPath) =>
-      setPaths((prevPaths) =>
-        prevPaths.map((path) =>
-          path.id === updatedPath.id ? updatedPath : path
-        )
+      onChange(
+        paths.map((path) => (path.id === updatedPath.id ? updatedPath : path))
       ),
-    []
+    [onChange, paths]
   );
 
   return (
@@ -76,7 +53,7 @@ export default function MasteryCalculator() {
             />
           ))}
         </div>
-        <PointsCounter pointsSpent={pointsSpent} />
+        <PointsCounter pointsSpent={pointsSpent} totalPoints={totalPoints} />
       </div>
     </div>
   );

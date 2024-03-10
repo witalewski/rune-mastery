@@ -2,14 +2,18 @@ import styles from "./PointsCounter.module.css";
 
 interface PointsCounterProps {
   pointsSpent: number;
+  totalPoints: number;
 }
 
 export default function PointsCounter({
-  pointsSpent: pointsSpent,
+  pointsSpent,
+  totalPoints,
 }: PointsCounterProps) {
   return (
     <div className={styles.pointsCounter}>
-      <div>{pointsSpent}/6</div>
+      <div>
+        {pointsSpent}/{totalPoints}
+      </div>
       <div>Points Spent</div>
     </div>
   );
