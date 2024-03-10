@@ -1,0 +1,53 @@
+.talentPath {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  color: white;
+  background-color: darkslateblue;
+}
+
+.title {
+  margin: 0;
+
+  background-color: tomato;
+  text-align: center;
+}
+
+.track {
+  flex: 1 0 320px;
+  display: grid;
+  grid-auto-rows: 60px;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+
+  background-color: darkmagenta;
+}
+
+.cell {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  &:first-child {
+    .separator:first-child {
+      visibility: hidden;
+    }
+  }
+
+  &:last-child {
+    .separator:last-child {
+      visibility: hidden;
+    }
+  }
+}
+
+.separator {
+  flex: 1;
+  height: 20px;
+  background-color: lightpink;
+  border-top: 1px solid lightgoldenrodyellow;
+  border-bottom: 1px solid lightgoldenrodyellow;
+}

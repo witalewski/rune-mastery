@@ -1,6 +1,6 @@
 import "./index.css";
 import styles from "./App.module.css";
-import TalentButton from "./components/talent-button/TalentButton";
+import TalentPath from "./components/talent-path/TalentPath";
 
 function App() {
   return (
@@ -9,10 +9,8 @@ function App() {
         TitanStar Legends - Rune Mastery Loadout Talent Calculator 9000
       </h1>
       <div className={styles.container}>
-        <TalentButton name="Talent 1" />
-        <TalentButton name="Talent 2" />
-        <TalentButton name="Talent 3" />
-        <TalentButton name="Unavailable Talent" disabled />
+        <TalentPath name="Talent Path 1" />
+        <TalentPath name="Talent Path 2" />
       </div>
     </main>
   );

@@ -1,24 +1,21 @@
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import styles from "./TalentButton.module.css";
 
 interface TalentButtonProps {
-  name: string;
+  talent: Talent;
+  onChange: (value: Talent) => void;
   disabled?: boolean;
 }
 
 export default function TalentButton({
-  name,
+  talent,
+  onChange,
   disabled = false,
 }: TalentButtonProps) {
-  const [selected, setSelected] = useState(false);
-
-  const onChange = useCallback(() => {
-    setSelected((prev) => !prev);
-  }, []);
-
   const onPointerUp = useCallback(
     (event: React.PointerEvent) => {
       const { pointerType, button } = event;
+      const { selected } = talent;
 
       if (disabled) {
         return;
@@ -33,9 +30,9 @@ export default function TalentButton({
         return;
       }
 
-      onChange();
+      onChange({ ...talent, selected: !selected });
     },
-    [selected, onChange, disabled]
+    [onChange, disabled, talent]
   );
 
   const onKeyDown = useCallback(
@@ -48,9 +45,9 @@ export default function TalentButton({
         return;
       }
 
-      onChange();
+      onChange({ ...talent, selected: !talent.selected });
     },
-    [onChange, disabled]
+    [onChange, disabled, talent]
   );
 
   return (
@@ -58,8 +55,8 @@ export default function TalentButton({
       className={styles.talentButton}
       role="checkbox"
       tabIndex={0}
-      aria-label={name}
-      aria-checked={selected}
+      aria-label={talent.name}
+      aria-checked={talent.selected}
       aria-disabled={disabled}
       onContextMenu={(event) => event.preventDefault()}
       onPointerUp={onPointerUp}
