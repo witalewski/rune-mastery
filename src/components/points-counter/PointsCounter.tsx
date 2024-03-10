@@ -11,10 +11,10 @@ export default function PointsCounter({
 }: PointsCounterProps) {
   return (
     <div className={styles.pointsCounter}>
+      <h2 className={styles.title}>Points Spent</h2>
       <div>
-        {pointsSpent}/{totalPoints}
+        {pointsSpent} / {totalPoints}
       </div>
-      <div>Points Spent</div>
     </div>
   );
 }

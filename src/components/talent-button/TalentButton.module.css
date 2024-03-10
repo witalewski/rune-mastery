@@ -1,27 +1,47 @@
 .talentButton {
-  padding: 2px;
+  --regular-frame-base-color: #4d4d4d;
+  --regular-frame-highlight-color: #3a3a3a;
 
-  background: linear-gradient(lightgray, lightgray 50%, white 50%, lightgray);
+  --selected-frame-base-color: #6ca2db;
+  --selected-frame-highlight-color: #394f79;
+
+  padding: 2px;
+  border: 1px solid var(--color-gray-medium);
+
+  background: linear-gradient(
+    var(--regular-frame-base-color),
+    var(--regular-frame-base-color) 50%,
+    var(--regular-frame-highlight-color) 50%,
+    var(--regular-frame-base-color)
+  );
 
   cursor: pointer;
 
   &[aria-checked="true"] {
+    position: relative;
+
     background: linear-gradient(
-      deepskyblue,
-      deepskyblue 50%,
-      lightskyblue 50%,
-      deepskyblue
+      var(--selected-frame-base-color),
+      var(--selected-frame-base-color) 50%,
+      var(--selected-frame-highlight-color) 50%,
+      var(--selected-frame-base-color)
     );
 
-    box-shadow: 0 0 10px 5px lightgray;
+    border: 1px solid #4b88c9;
+
+    box-shadow: 0 0 10px 5px var(--color-gray-medium);
 
     .icon {
+      border: 1px solid #2a69ad;
       background-position-y: 0;
     }
   }
 
+  &:focus {
+    position: relative;
+  }
+
   &[aria-disabled="true"] {
-    background: red;
     cursor: inherit;
   }
 
@@ -33,9 +53,11 @@
 }
 
 .icon {
-  height: 50px;
-  width: 50px;
+  height: 52px;
+  width: 52px;
+
+  border: 1px solid var(--color-gray-medium);
 
   background: url("../../assets/talent-icons-sprite.png") lightgray;
-  background-position-y: -50px;
+  background-position-y: calc(-1 * var(--sprite-size));
 }

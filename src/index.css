@@ -1,9 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+:root {
+  --color-black: #101010;
+
+  --color-gray-light-transparent: #80808040;
+  --color-gray-medium: #404040;
+  --color-gray-dark: #303030;
+
+  --text-color-base: #f0f0f0;
+  --text-color-secondary: #33465b;
+
+  --font-size-lg: 18px;
+  --font-size-md: 14px;
+
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 36px;
+
+  --sprite-size: 50px;
+
+  @media (min-width: 768px) {
+    --font-size-lg: 28px;
+    --font-size-md: 18px;
+
+    --spacing-xs: 12px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 48px;
+    --spacing-xl: 86px;
+  }
+}
+
 html {
   box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-black);
+  padding: var(--spacing-xs);
 }
 
 *,
 *::before,
 *::after {
   box-sizing: inherit;
+}
+
+.opensans {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
 }

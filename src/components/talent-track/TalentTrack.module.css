@@ -3,25 +3,23 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-
-  background-color: darkslateblue;
+  gap: var(--spacing-sm);
 }
 
 .title {
   margin: 0;
 
-  background-color: tomato;
   text-align: center;
+
+  font-size: var(--font-size-md);
+  text-transform: uppercase;
 }
 
 .track {
   flex: 1 0 320px;
   display: grid;
-  grid-auto-rows: 60px;
+  grid-auto-rows: 72px;
   grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-
-  background-color: darkmagenta;
 }
 
 .cell {
@@ -45,8 +43,8 @@
 
 .separator {
   flex: 1;
-  height: 20px;
-  background-color: lightpink;
-  border-top: 1px solid lightgoldenrodyellow;
-  border-bottom: 1px solid lightgoldenrodyellow;
+  height: 16px;
+  background-color: var(--color-gray-dark);
+  border-top: 1px solid var(--color-gray-light-transparent);
+  border-bottom: 1px solid var(--color-gray-light-transparent);
 }
