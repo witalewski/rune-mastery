@@ -1,6 +1,7 @@
 interface Talent {
   id: string;
   name: string;
+  iconIndex: number;
   selected: boolean;
 }
 

@@ -7,6 +7,8 @@ interface TalentButtonProps {
   disabled?: boolean;
 }
 
+const SPRITE_SIZE = 50;
+
 export default function TalentButton({
   talent,
   onChange,
@@ -62,7 +64,12 @@ export default function TalentButton({
       onPointerUp={onPointerUp}
       onKeyDown={onKeyDown}
     >
-      <div className={styles.icon} />
+      <div
+        className={styles.icon}
+        style={{
+          backgroundPositionX: -SPRITE_SIZE * talent.iconIndex,
+        }}
+      />
     </div>
   );
 }

@@ -3,6 +3,8 @@
 
   background: linear-gradient(lightgray, lightgray 50%, white 50%, lightgray);
 
+  cursor: pointer;
+
   &[aria-checked="true"] {
     background: linear-gradient(
       deepskyblue,
@@ -12,15 +14,28 @@
     );
 
     box-shadow: 0 0 10px 5px lightgray;
+
+    .icon {
+      background-position-y: 0;
+    }
   }
 
   &[aria-disabled="true"] {
     background: red;
+    cursor: inherit;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &[aria-disabled="false"]:hover .icon {
+      background-position-y: 0;
+    }
   }
 }
 
 .icon {
   height: 50px;
   width: 50px;
-  background-color: coral;
+
+  background: url("../../assets/talent-icons-sprite.png") lightgray;
+  background-position-y: -50px;
 }
