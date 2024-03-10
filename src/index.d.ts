@@ -3,3 +3,9 @@ interface Talent {
   name: string;
   selected: boolean;
 }
+
+interface TalentPath {
+  id: string;
+  name: string;
+  talents: Talent[];
+}

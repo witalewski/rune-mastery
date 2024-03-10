@@ -1,30 +1,29 @@
-import { ReactNode, useCallback, useState } from "react";
+import { ReactNode, useCallback } from "react";
 import TalentButton from "../talent-button/TalentButton";
-import styles from "./TalentPath.module.css";
+import styles from "./TalentTrack.module.css";
 
-interface TalentPathProps {
-  name: string;
+interface TalentTrackProps {
+  path: TalentPath;
+  hasPointsRemaining: boolean;
+  onChange: (value: TalentPath) => void;
 }
 
-export default function TalentPath({ name }: TalentPathProps) {
-  const [talents, setTalents] = useState([
-    { id: "talent-1", name: "Talent 1", selected: true },
-    { id: "talent-2", name: "Talent 2", selected: true },
-    { id: "talent-3", name: "Talent 3", selected: false },
-    { id: "talent-4", name: "Talent 4", selected: false },
-    { id: "talent-5", name: "Talent 5", selected: false },
-    { id: "talent-6", name: "Talent 6", selected: false },
-    { id: "talent-7", name: "Talent 7", selected: false },
-  ]);
+export default function TalentTrack({
+  path,
+  hasPointsRemaining,
+  onChange,
+}: TalentTrackProps) {
+  const { name, talents } = path;
 
   const onTalentChange = useCallback(
     (updatedTalent: Talent) =>
-      setTalents((prevTalents) =>
-        prevTalents.map((talent) =>
+      onChange({
+        ...path,
+        talents: talents.map((talent) =>
           talent.id === updatedTalent.id ? updatedTalent : talent
-        )
-      ),
-    []
+        ),
+      }),
+    [path, talents, onChange]
   );
 
   const isTalentDisabled = useCallback(
@@ -37,9 +36,13 @@ export default function TalentPath({ name }: TalentPathProps) {
         return !isLastTalent && talents[talentIndex + 1].selected;
       }
 
+      if (!hasPointsRemaining) {
+        return true;
+      }
+
       return !isFirstTalent && !talents[talentIndex - 1].selected;
     },
-    [talents]
+    [talents, hasPointsRemaining]
   );
 
   return (

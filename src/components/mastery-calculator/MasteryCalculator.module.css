@@ -1,0 +1,32 @@
+.masteryCalculator {
+  min-width: 320px;
+  max-width: 1000px;
+
+  margin: auto;
+
+  background-color: darkslategray;
+
+  color: white;
+}
+
+.title {
+  background-color: green;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  min-width: 320px;
+}
+
+.paths {
+  flex: 1 0 320px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
